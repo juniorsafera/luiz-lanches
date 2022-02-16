@@ -13,6 +13,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
   Widget build(BuildContext context) {
     // ignore: avoid_unnecessary_containers
     final size = MediaQuery.of(context).size;
+    //final listaItem
     // ignore: sized_box_for_whitespace
     return Container(
       width: size.width,
@@ -42,8 +43,8 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                 ),
               ),
               child: Column(
-                children: [
-                  
+                children: const [
+
                 ],
               ),
             ),
