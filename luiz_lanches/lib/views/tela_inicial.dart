@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:luiz_lanches/controller/controller_tela_inicial.dart';
 import 'package:luiz_lanches/others/paleta_cores.dart';
 
 class TelaInicial extends StatelessWidget {
@@ -9,6 +10,7 @@ class TelaInicial extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    ControllerTelaInicial controller = ControllerTelaInicial();
     return Scaffold(
       body: Container(
         width: size.width,
@@ -37,7 +39,9 @@ class TelaInicial extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50)),
               elevation: 6,
-              onPressed: () {},
+              onPressed: (){
+                controller.abrirTelaPrincipal(context);
+              },
               // ignore: sized_box_for_whitespace
               child: Container(
                 width: size.width * 0.3,
