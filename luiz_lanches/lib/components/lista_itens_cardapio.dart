@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:luiz_lanches/components/botaoadd.dart';
-import 'package:luiz_lanches/data/data_item_cardapio.dart';
 import 'package:luiz_lanches/models/item_cardapio.dart';
 import 'package:luiz_lanches/others/paleta_cores.dart';
 
@@ -18,7 +17,7 @@ class ListaItemCardapio extends StatefulWidget {
 class _ListaItemCardapioState extends State<ListaItemCardapio> {
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+     
 
     return Expanded(
       child: ListView.builder(
