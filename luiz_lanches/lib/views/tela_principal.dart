@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:luiz_lanches/components/lista_itens_cardapio.dart';
-import 'package:luiz_lanches/controller/controller_tela_inicial.dart';
 import 'package:luiz_lanches/data/data_item_cardapio.dart';
-import 'package:luiz_lanches/models/item_cardapio.dart';
 import 'package:luiz_lanches/others/paleta_cores.dart';
 
 class TelaPrincipal extends StatefulWidget {
@@ -27,6 +25,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
           SizedBox(
             height: size.height * 0.03,
           ),
+          // ignore: sized_box_for_whitespace
           Container(
              width: size.width,
             child: Image.asset(
@@ -63,6 +62,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                           decoration: TextDecoration.none),
                     ),
                   ),
+                  // ignore: avoid_unnecessary_containers
                   Container(
                     child: ListaItemCardapio(
                       itens: itensCardapio,
