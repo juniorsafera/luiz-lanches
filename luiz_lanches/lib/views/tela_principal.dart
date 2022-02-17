@@ -25,11 +25,14 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
       child: Column(
         children: [
           SizedBox(
-            height: size.height * 0.1,
+            height: size.height * 0.03,
           ),
-          Image.asset(
-            'assets/logo-top.png',
-            fit: BoxFit.cover,
+          Container(
+             width: size.width,
+            child: Image.asset(
+              'assets/logo-top.png',
+              fit: BoxFit.cover,
+            ),
           ),
           const SizedBox(
             height: 20,
