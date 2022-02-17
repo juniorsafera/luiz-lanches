@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:luiz_lanches/components/botaoadd.dart';
 import 'package:luiz_lanches/data/data_item_cardapio.dart';
 import 'package:luiz_lanches/models/item_cardapio.dart';
 import 'package:luiz_lanches/others/paleta_cores.dart';
@@ -47,11 +48,7 @@ class _ListaItemCardapioState extends State<ListaItemCardapio> {
                         color: Colors.black,
                       ),
                     ),
-                    trailing: Container(
-                      width: 80,
-                      height: 30,
-                      color: Paleta.corPrimaria,
-                    ),
+                    trailing: BotaoAdd(valor: _item.valor),
                   ),
                 ),
               ),
