@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:luiz_lanches/components/lista_itens_cardapio.dart';
+import 'package:luiz_lanches/controller/controller_tela_inicial.dart';
+import 'package:luiz_lanches/data/data_item_cardapio.dart';
+import 'package:luiz_lanches/models/item_cardapio.dart';
 import 'package:luiz_lanches/others/paleta_cores.dart';
 
 class TelaPrincipal extends StatefulWidget {
@@ -13,7 +17,8 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
   Widget build(BuildContext context) {
     // ignore: avoid_unnecessary_containers
     final size = MediaQuery.of(context).size;
-    //final listaItem
+    final itensCardapio = DADOS_ITEM_CARDAPIO.toList();
+
     // ignore: sized_box_for_whitespace
     return Container(
       width: size.width,
@@ -43,8 +48,23 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                 ),
               ),
               child: Column(
-                children: const [
-
+                // ignore: prefer_const_literals_to_create_immutables
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      'HAMBÚRGUER',
+                      style: TextStyle(
+                          color: Paleta.corPrimaria,
+                          fontSize: 24,
+                          decoration: TextDecoration.none),
+                    ),
+                  ),
+                  Container(
+                    child: ListaItemCardapio(
+                      itens: itensCardapio,
+                    ),
+                  )
                 ],
               ),
             ),
