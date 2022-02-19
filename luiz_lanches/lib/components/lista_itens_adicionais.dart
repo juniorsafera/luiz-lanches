@@ -12,11 +12,20 @@ class ListaItensAdicionais extends StatefulWidget {
   State<ListaItensAdicionais> createState() => _ListaItensAdicionaisState();
 }
 
+List<bool> checkMarcado = [false];
+
 class _ListaItensAdicionaisState extends State<ListaItensAdicionais> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    checkMarcado = List<bool>.filled(widget.itensAdicionais.length, false);
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    bool checkMarcado = false;
+
     return Container(
       width: size.width * 0.8,
       height: size.height * 0.3,
@@ -29,15 +38,16 @@ class _ListaItensAdicionaisState extends State<ListaItensAdicionais> {
               children: [
                 Material(
                   child: ListTile(
-                    leading: Checkbox(
-                      value: checkMarcado,
+                    title: CheckboxListTile(
+                      title: Text(_itens.titulo),
+                      value: checkMarcado[index],
+                      controlAffinity: ListTileControlAffinity.leading, 
                       onChanged: (bool? value) {
                         setState(() {
-                          checkMarcado = value!;
+                          checkMarcado[index] = value!;
                         });
                       },
                     ),
-                    title: Text(_itens.titulo),
                     trailing: Text('R\$ ${_itens.valor}'),
                   ),
                 )
