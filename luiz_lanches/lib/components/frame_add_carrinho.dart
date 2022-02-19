@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:luiz_lanches/components/lista_itens_adicionais.dart';
 import 'package:luiz_lanches/data/data_item_adicional.dart';
 import 'package:luiz_lanches/models/item_adicional.dart';
+import 'package:luiz_lanches/others/paleta_cores.dart';
 
 class FrameAddCarrinho {
   final _itensAdicionais = DADOS_ITENS_ADICIONAIS.toList();
@@ -13,7 +14,8 @@ class FrameAddCarrinho {
     showDialog<String>(
         context: context,
         builder: (context) => AlertDialog(
-              title: Text('Adicionar ${itemTitulo}  R\$ ${valor},00'),
+              title: Center(
+                  child: Text('Adicionar ${itemTitulo}  R\$ ${valor},00')),
               content: SizedBox(
                 height: size.height * 0.5,
                 child: Column(
@@ -32,7 +34,16 @@ class FrameAddCarrinho {
                 ),
               ),
               actions: <Widget>[
-                FlatButton(onPressed: () {}, child: const Text('Cancelar')),
+                FlatButton(
+                  color: Paleta.corPrimaria,
+                  onPressed: () {},
+                  child: const Text(
+                    'Cancelar',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
                 FlatButton(onPressed: () {}, child: const Text('Adicionar')),
               ],
             ));
