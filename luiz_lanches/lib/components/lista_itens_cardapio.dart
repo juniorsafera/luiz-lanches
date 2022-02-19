@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:luiz_lanches/components/botaoadd.dart';
+import 'package:luiz_lanches/components/frame_add_carrinho.dart';
 import 'package:luiz_lanches/models/item_cardapio.dart';
 import 'package:luiz_lanches/others/paleta_cores.dart';
 
@@ -17,8 +18,7 @@ class ListaItemCardapio extends StatefulWidget {
 class _ListaItemCardapioState extends State<ListaItemCardapio> {
   @override
   Widget build(BuildContext context) {
-     
-
+    final FrameAddCarrinho frame = FrameAddCarrinho();
     return Expanded(
       child: ListView.builder(
         itemCount: widget.itens.length,
@@ -29,7 +29,8 @@ class _ListaItemCardapioState extends State<ListaItemCardapio> {
               Material(
                 color: Colors.transparent,
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () =>
+                      frame.FrameAddItem(context, _item.titulo, _item.valor),
                   child: ListTile(
                     title: Text(
                       _item.titulo,
