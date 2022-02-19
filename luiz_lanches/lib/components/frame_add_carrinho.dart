@@ -12,12 +12,38 @@ class FrameAddCarrinho {
     showDialog<String>(
         context: context,
         builder: (context) => AlertDialog(
-              title: Center(
-                  child: Text('Adicionar ${itemTitulo}  R\$ ${valor},00')),
+              title: const Center(child: Text('Adicionar')),
               content: SizedBox(
                 height: size.height * 0.6,
                 child: Column(
                   children: [
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(itemTitulo),
+                          Text(' R\$ $valor,00'),
+                        ],
+                      ),
+                    ),
+
+                    // Definindo área de adicionais
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        'Adicionais',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    ListaItensAdicionais(
+                      itensAdicionais: _itensAdicionais,
+                    ),
+
+                    SizedBox(
+                      height: 10,
+                      child: Container(),
+                    ),
+
                     // Definindo label de input (Observações)
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,16 +84,15 @@ class FrameAddCarrinho {
                       height: 10,
                       child: Container(),
                     ),
-                    // Definindo área de adicionais
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        'Adicionais',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+
+                    Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text('TOTAL R\$ ${valor},00',
+                              style: TextStyle(fontWeight: FontWeight.bold))
+                        ],
                       ),
-                    ),
-                    ListaItensAdicionais(
-                      itensAdicionais: _itensAdicionais,
                     ),
                   ],
                 ),
@@ -75,7 +100,9 @@ class FrameAddCarrinho {
               actions: <Widget>[
                 FlatButton(
                   color: Paleta.corPrimaria,
-                  onPressed: () {},
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25)),
+                  onPressed: () => Navigator.pop(context),
                   child: const Text(
                     'Cancelar',
                     style: TextStyle(
@@ -83,7 +110,12 @@ class FrameAddCarrinho {
                     ),
                   ),
                 ),
-                FlatButton(onPressed: () {}, child: const Text('Adicionar')),
+                FlatButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'Adicionar',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    )),
               ],
             ));
   }
