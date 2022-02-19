@@ -1,14 +1,13 @@
-import 'dart:js';
 
 import 'package:flutter/material.dart';
 import 'package:luiz_lanches/components/lista_itens_adicionais.dart';
 import 'package:luiz_lanches/data/data_item_adicional.dart';
-import 'package:luiz_lanches/models/item_adicional.dart';
 import 'package:luiz_lanches/others/paleta_cores.dart';
 
 class FrameAddCarrinho {
   final _itensAdicionais = DADOS_ITENS_ADICIONAIS.toList();
 
+  // ignore: non_constant_identifier_names
   void FrameAddItem(BuildContext context, String itemTitulo, String valor) {
     final size = MediaQuery.of(context).size;
     showDialog<String>(
