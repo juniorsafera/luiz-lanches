@@ -50,8 +50,11 @@ class _ListaItensAdicionaisState extends State<ListaItensAdicionais> {
                     ),
                     trailing: Text('R\$ ${_itens.valor}'),
                   ),
-                )
+                ),
+                
+                   
               ],
+              
             );
           },
         ),
