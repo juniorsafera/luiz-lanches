@@ -13,6 +13,8 @@ class TelaPrincipal extends StatefulWidget {
   State<TelaPrincipal> createState() => _TelaPrincipalState();
 }
 
+   int qntPedidos = 0;
+
 class _TelaPrincipalState extends State<TelaPrincipal> {
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
 
     // ignore: sized_box_for_whitespace
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         width: size.width,
         child: Column(
           children: [
@@ -40,6 +42,9 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
             const SizedBox(
               height: 20,
             ),
+
+            // ÁREA DE LISTA DE ITENS DO CARDÁPIO
+            
             Expanded(
               child: Container(
                 width: size.width,
@@ -82,8 +87,8 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.white,
           onPressed: () {},
-          child: const BotaoCarrinho(
-            numeroPedidos: '0',
+          child:   BotaoCarrinho(
+            numeroPedidos: qntPedidos.toString(),
           )),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
     );
