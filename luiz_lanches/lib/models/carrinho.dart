@@ -2,6 +2,7 @@ import 'package:luiz_lanches/models/pedido.dart';
 
 class ModelCarrinho {
   final String codigo;
+  final String nomeCliente;
   final List<ModelPedido> pedidos;
   final String tipoPagamento;
   final bool troco;
@@ -16,6 +17,7 @@ class ModelCarrinho {
 
   const ModelCarrinho({
     required this.codigo,
+    required this.nomeCliente,
     required this.pedidos,
     required this.tipoPagamento,
     required this.troco,
