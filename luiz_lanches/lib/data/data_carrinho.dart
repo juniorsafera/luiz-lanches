@@ -1,9 +1,10 @@
 import 'package:luiz_lanches/models/carrinho.dart';
 import 'package:luiz_lanches/models/pedido.dart';
 
-const DADOS_CARRINHO = [
+const List<ModelCarrinho> DADOS_CARRINHO = [
   ModelCarrinho(
       codigo: '001',
+      nomeCliente: 'Leticia Silva',
       pedidos: [
         ModelPedido(
             codigo: 'p1',
