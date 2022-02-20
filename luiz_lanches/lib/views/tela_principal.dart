@@ -24,7 +24,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
     // ignore: avoid_unnecessary_containers
     final size = MediaQuery.of(context).size;
     final itensCardapio = DADOS_ITEM_CARDAPIO.toList();
-    final dCarrinho = DADOS_CARRINHO.toList();
+     
 
     ControllerTelaPrincipal controller = ControllerTelaPrincipal();
 
@@ -93,7 +93,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.white,
           onPressed: () {
-            controller.abrirTelaCarrinho(context, dCarrinho);
+            controller.abrirTelaCarrinho(context);
           },
           child: BotaoCarrinho(
             numeroPedidos: qntPedidos.toString(),
