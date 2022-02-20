@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:luiz_lanches/components/botao_carrinho.dart';
 import 'package:luiz_lanches/components/lista_itens_cardapio.dart';
 import 'package:luiz_lanches/controller/controller_tela_principal.dart';
+import 'package:luiz_lanches/data/data_carrinho.dart';
 import 'package:luiz_lanches/data/data_item_cardapio.dart';
+import 'package:luiz_lanches/models/carrinho.dart';
 import 'package:luiz_lanches/others/paleta_cores.dart';
 
 class TelaPrincipal extends StatefulWidget {
@@ -22,6 +24,8 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
     // ignore: avoid_unnecessary_containers
     final size = MediaQuery.of(context).size;
     final itensCardapio = DADOS_ITEM_CARDAPIO.toList();
+    final dCarrinho = DADOS_CARRINHO.toList();
+
     ControllerTelaPrincipal controller = ControllerTelaPrincipal();
 
     // ignore: sized_box_for_whitespace
@@ -89,7 +93,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.white,
           onPressed: () {
-            controller.abrirTelaCarrinho(context);
+            controller.abrirTelaCarrinho(context, dCarrinho);
           },
           child: BotaoCarrinho(
             numeroPedidos: qntPedidos.toString(),
