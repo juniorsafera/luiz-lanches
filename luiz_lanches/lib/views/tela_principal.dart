@@ -4,6 +4,7 @@ import 'package:luiz_lanches/components/lista_itens_cardapio.dart';
 import 'package:luiz_lanches/controller/controller_tela_principal.dart';
 import 'package:luiz_lanches/data/data_carrinho.dart';
 import 'package:luiz_lanches/data/data_item_cardapio.dart';
+import 'package:luiz_lanches/data/data_pedido.dart';
 import 'package:luiz_lanches/models/carrinho.dart';
 import 'package:luiz_lanches/others/paleta_cores.dart';
 
@@ -16,15 +17,22 @@ class TelaPrincipal extends StatefulWidget {
   State<TelaPrincipal> createState() => _TelaPrincipalState();
 }
 
+final dados = DADOS_PEDIDOS.toList();
 int qntPedidos = 0;
 
 class _TelaPrincipalState extends State<TelaPrincipal> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print('INICIOU!');
+  }
+
   @override
   Widget build(BuildContext context) {
     // ignore: avoid_unnecessary_containers
     final size = MediaQuery.of(context).size;
     final itensCardapio = DADOS_ITEM_CARDAPIO.toList();
-     
 
     ControllerTelaPrincipal controller = ControllerTelaPrincipal();
 
