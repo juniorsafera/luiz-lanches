@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:luiz_lanches/components/botao_carrinho.dart';
 import 'package:luiz_lanches/components/lista_itens_cardapio.dart';
+import 'package:luiz_lanches/controller/controller_tela_principal.dart';
 import 'package:luiz_lanches/data/data_item_cardapio.dart';
 import 'package:luiz_lanches/others/paleta_cores.dart';
 
@@ -13,7 +14,7 @@ class TelaPrincipal extends StatefulWidget {
   State<TelaPrincipal> createState() => _TelaPrincipalState();
 }
 
-   int qntPedidos = 0;
+int qntPedidos = 0;
 
 class _TelaPrincipalState extends State<TelaPrincipal> {
   @override
@@ -21,6 +22,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
     // ignore: avoid_unnecessary_containers
     final size = MediaQuery.of(context).size;
     final itensCardapio = DADOS_ITEM_CARDAPIO.toList();
+    ControllerTelaPrincipal controller = ControllerTelaPrincipal();
 
     // ignore: sized_box_for_whitespace
     return Scaffold(
@@ -33,7 +35,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
             ),
             // ignore: sized_box_for_whitespace
             Container(
-              width: size.width,
+              height: size.height * 0.3,
               child: Image.asset(
                 'assets/logo-top.png',
                 fit: BoxFit.cover,
@@ -44,7 +46,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
             ),
 
             // ÁREA DE LISTA DE ITENS DO CARDÁPIO
-            
+
             Expanded(
               child: Container(
                 width: size.width,
@@ -86,8 +88,10 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
       ),
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.white,
-          onPressed: () {},
-          child:   BotaoCarrinho(
+          onPressed: () {
+            controller.abrirTelaCarrinho(context);
+          },
+          child: BotaoCarrinho(
             numeroPedidos: qntPedidos.toString(),
           )),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
