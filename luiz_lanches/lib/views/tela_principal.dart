@@ -16,23 +16,27 @@ class TelaPrincipal extends StatefulWidget {
   @override
   State<TelaPrincipal> createState() => _TelaPrincipalState();
 }
-
-final dados = DADOS_PEDIDOS.toList();
+final DadosPedido pedido = DadosPedido();
+final listaPedidos = pedido.dadosPedidos.toList();
+ 
 int qntPedidos = 0;
+
 
 class _TelaPrincipalState extends State<TelaPrincipal> {
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    print('INICIOU!');
-  }
+   
 
   @override
   Widget build(BuildContext context) {
     // ignore: avoid_unnecessary_containers
     final size = MediaQuery.of(context).size;
     final itensCardapio = DADOS_ITEM_CARDAPIO.toList();
+
+    void atualizarCarrinho(){
+   setState(() {
+     qntPedidos = listaPedidos.length;
+   });
+}
 
     ControllerTelaPrincipal controller = ControllerTelaPrincipal();
 
