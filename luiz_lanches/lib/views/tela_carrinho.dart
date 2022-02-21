@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:luiz_lanches/components/lista_pedidos.dart';
 import 'package:luiz_lanches/components/lista_pedidos_carrinho.dart';
@@ -8,17 +10,48 @@ import 'package:luiz_lanches/models/carrinho.dart';
 import 'package:luiz_lanches/models/pedido.dart';
 
 class TelaCarrinho extends StatefulWidget {
+  
   const TelaCarrinho({Key? key}) : super(key: key);
 
   @override
   State<TelaCarrinho> createState() => _TelaCarrinhoState();
+
+   static DadosPedido listaPedidos = DadosPedido();
+   static List<ModelPedido> dadosPedidos = [];
+  void listarPedidos(){
+     
+    
+     listaPedidos.adicionarPedido('pedido', [], '14');
+     print('Carrinho');
+  }
+  void adicionarPedido(String pedido, List<String> adicionais, String valorTotalItem){
+          dadosPedidos.add(
+            ModelPedido(codigo: Random().nextDouble().toString(),
+            pedido: pedido, 
+            adicionais: adicionais, 
+            valorTotalItem: valorTotalItem),
+            );
+            print(dadosPedidos[0].pedido);
+             
+            
+             
+    }
+  
 }
 
 class _TelaCarrinhoState extends State<TelaCarrinho> {
   @override
   Widget build(BuildContext context) {
-    final pedidos = DADOS_PEDIDOS.toList();
+     
     final ControllerTelaPrincipal cc = ControllerTelaPrincipal();
+    final DadosPedido dp = DadosPedido();
+    final pedidos = dp.dadosPedidos.toList();
+    final List<ModelPedido> dadosPedidos = [];
+      
+
+     
+
+
 
     final size = MediaQuery.of(context).size;
 
@@ -34,7 +67,7 @@ class _TelaCarrinhoState extends State<TelaCarrinho> {
               width: size.width,
               height: 150,
               color: Colors.grey[200],
-              child: Text(cc.dados.length.toString()),
+              child: Text( dadosPedidos.toString()   ),
             ),
             Text('R\$ 25,00')
           ],
