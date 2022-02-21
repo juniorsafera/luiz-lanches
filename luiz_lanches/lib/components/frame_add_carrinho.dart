@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:luiz_lanches/components/lista_itens_adicionais.dart';
 import 'package:luiz_lanches/controller/controller_tela_principal.dart';
 import 'package:luiz_lanches/data/data_item_adicional.dart';
+import 'package:luiz_lanches/data/data_pedido.dart';
 import 'package:luiz_lanches/others/paleta_cores.dart';
+import 'package:luiz_lanches/views/tela_carrinho.dart';
 
 class FrameAddCarrinho {
   final _itensAdicionais = DADOS_ITENS_ADICIONAIS.toList();
@@ -11,11 +13,11 @@ class FrameAddCarrinho {
   // ignore: non_constant_identifier_names
   void FrameAddItem(BuildContext context, String itemTitulo, String valor) {
     final size = MediaQuery.of(context).size;
-    final ControllerTelaPrincipal controller = ControllerTelaPrincipal();
-    final String pedido;
-    final List adicionais;
-    final String observacao;
-    final String valorTotalItem;
+    //final ControllerTelaPrincipal controller = ControllerTelaPrincipal();
+    
+    final DadosPedido listaPedidos = DadosPedido();
+    final  TelaCarrinho carr =  TelaCarrinho();
+    
     showDialog<String>(
         context: context,
         builder: (context) => AlertDialog(
@@ -119,8 +121,8 @@ class FrameAddCarrinho {
                 ),
                 FlatButton(
                     onPressed: () {
-                      controller.adicionarPedido(
-                          itemTitulo, [], 'observacao', valor);
+                       listaPedidos.adicionarPedido('pedido', [], '14');
+                       carr.adicionarPedido('pedido', [], '14');
                      
                     },
                     child: const Text(
