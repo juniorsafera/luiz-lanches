@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:luiz_lanches/others/paleta_cores.dart';
 
-class BotaoCarrinho extends StatelessWidget {
+class BotaoCarrinho extends StatefulWidget {
   final String numeroPedidos;
   const BotaoCarrinho({
     Key? key,
     required this.numeroPedidos,
   }) : super(key: key);
 
+  @override
+  State<BotaoCarrinho> createState() => _BotaoCarrinhoState();
+}
+
+
+class _BotaoCarrinhoState extends State<BotaoCarrinho> {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -25,7 +31,7 @@ class BotaoCarrinho extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  numeroPedidos,
+                  widget.numeroPedidos,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
