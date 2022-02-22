@@ -8,16 +8,23 @@ import 'package:luiz_lanches/views/tela_carrinho.dart';
 
 class FrameAddCarrinho {
   final _itensAdicionais = DADOS_ITENS_ADICIONAIS.toList();
-   
 
   // ignore: non_constant_identifier_names
-  void FrameAddItem(BuildContext context, String itemTitulo, String valor) {
+  void FrameAddItem(
+      BuildContext context,
+      String itemTitulo,
+      String valor,
+      void Function(String pedido, List<String> adicionais, String valor)
+          addPedido) {
     final size = MediaQuery.of(context).size;
     //final ControllerTelaPrincipal controller = ControllerTelaPrincipal();
-    
+
     final DadosPedido listaPedidos = DadosPedido();
-    final  TelaCarrinho carr =  TelaCarrinho();
-    
+
+    _atualizarCarrinho() {
+      addPedido('pedido1', [], '12');
+    }
+
     showDialog<String>(
         context: context,
         builder: (context) => AlertDialog(
@@ -99,7 +106,8 @@ class FrameAddCarrinho {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text('TOTAL R\$ ${valor},00',
-                              style: TextStyle(fontWeight: FontWeight.bold))
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold))
                         ],
                       ),
                     ),
@@ -120,11 +128,7 @@ class FrameAddCarrinho {
                   ),
                 ),
                 FlatButton(
-                    onPressed: () {
-                       listaPedidos.adicionarPedido('pedido', [], '14');
-                       carr.adicionarPedido('pedido', [], '14');
-                     
-                    },
+                    onPressed: () {},
                     child: const Text(
                       'Adicionar',
                       style: TextStyle(fontWeight: FontWeight.bold),
