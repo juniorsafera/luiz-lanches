@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:luiz_lanches/components/botaoadd.dart';
 import 'package:luiz_lanches/components/frame_add_carrinho.dart';
 import 'package:luiz_lanches/models/item_cardapio.dart';
+import 'package:luiz_lanches/models/pedido.dart';
 import 'package:luiz_lanches/others/paleta_cores.dart';
 
 class ListaItemCardapio extends StatefulWidget {
@@ -16,6 +19,24 @@ class ListaItemCardapio extends StatefulWidget {
 }
 
 class _ListaItemCardapioState extends State<ListaItemCardapio> {
+  static List<ModelPedido> _Pedidos = [];
+
+  List<ModelPedido> get _pedidosRecentes {
+    return _Pedidos.toList();
+  }
+
+  _adicionarPedido(String pedido, List<String> adicionais, String valor) {
+    final novoPedido = ModelPedido(
+        codigo: Random().nextDouble().toString(),
+        pedido: pedido,
+        adicionais: adicionais,
+        valorTotalItem: valor);
+
+    setState(() {
+      _Pedidos.add(novoPedido);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final FrameAddCarrinho frame = FrameAddCarrinho();
@@ -29,8 +50,12 @@ class _ListaItemCardapioState extends State<ListaItemCardapio> {
               Material(
                 color: Colors.transparent,
                 child: InkWell(
-                  onTap: () =>
-                      frame.FrameAddItem(context, _item.titulo, _item.valor),
+                  onTap: () => frame.FrameAddItem(
+                    context,
+                    _item.titulo,
+                    _item.valor,
+                    _adicionarPedido
+                  ),
                   child: ListTile(
                     title: Text(
                       _item.titulo,
