@@ -10,49 +10,44 @@ import 'package:luiz_lanches/models/carrinho.dart';
 import 'package:luiz_lanches/models/pedido.dart';
 
 class TelaCarrinho extends StatefulWidget {
-  
+   
   const TelaCarrinho({Key? key}) : super(key: key);
 
   @override
   State<TelaCarrinho> createState() => _TelaCarrinhoState();
 
    static DadosPedido listaPedidos = DadosPedido();
-   static List<ModelPedido> dadosPedidos = [];
-  void listarPedidos(){
-     
-    
-     listaPedidos.adicionarPedido('pedido', [], '14');
-     print('Carrinho');
-  }
-  void adicionarPedido(String pedido, List<String> adicionais, String valorTotalItem){
-          dadosPedidos.add(
-            ModelPedido(codigo: Random().nextDouble().toString(),
-            pedido: pedido, 
-            adicionais: adicionais, 
-            valorTotalItem: valorTotalItem),
-            );
-            print(dadosPedidos[0].pedido);
-             
-            
-             
-    }
+   
   
 }
 
 class _TelaCarrinhoState extends State<TelaCarrinho> {
+
+
+static List<ModelPedido> _Pedidos = [];
+    
+   List<ModelPedido> get _pedidosRecentes {
+    return _Pedidos.toList();
+  }
+
+
+_adicionarPedido(String pedido, List<String> adicionais, String valor) {
+    final novoPedido = ModelPedido(
+        codigo: Random().nextDouble().toString(),
+        pedido: pedido,
+        adicionais: adicionais,
+        valorTotalItem: valor);
+
+    setState(() {
+      _Pedidos.add(novoPedido);
+    });
+     
+  }
+
+
   @override
   Widget build(BuildContext context) {
      
-    final ControllerTelaPrincipal cc = ControllerTelaPrincipal();
-    final DadosPedido dp = DadosPedido();
-    final pedidos = dp.dadosPedidos.toList();
-    final List<ModelPedido> dadosPedidos = [];
-      
-
-     
-
-
-
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -67,9 +62,9 @@ class _TelaCarrinhoState extends State<TelaCarrinho> {
               width: size.width,
               height: 150,
               color: Colors.grey[200],
-              child: Text( dadosPedidos.toString()   ),
+              child: Text( _Pedidos.length.toString()  ),
             ),
-            Text('R\$ 25,00')
+           
           ],
         )));
   }
